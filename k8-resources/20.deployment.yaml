@@ -22,4 +22,5 @@ spec:
     spec:
       containers:
       - name: nginx
-        image: nginx:trixie-perl
+        image: almalinux:9
+        command: ["sleep", "1000"]

@@ -1,7 +1,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: Deployment-nginx
+  name: deployment-nginx
   # these are replica set labels
   labels:
     purpose: dp-demo

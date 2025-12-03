@@ -1,10 +1,9 @@
 apiVersion: v1
 kind: Pod
-#kind: pod
 metadata:
- name: service-pod
- #these lables are used to register this pod with service
- lables:
+  name: service-demo
+  # These labels are used to register this pod with service
+  labels:
     project: roboshop
     component: frontend
     environment: dev

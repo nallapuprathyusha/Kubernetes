@@ -32,11 +32,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: nginx-efs-static
+  name: nginx-efs-dynamic
 spec:
   type: LoadBalancer
   selector:
-    purpose: efs-static
+    purpose: efs-dynamic
   ports:
     - protocol: TCP
       port: 80 # service port

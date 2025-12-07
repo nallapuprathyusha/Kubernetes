@@ -9,7 +9,7 @@ spec:
   - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain # retain means don't delete data, Recycle means delete data don't delete disk. Delete means delete the disk
   capacity:
-    storage: 10Gi
+    storage: 10Gi  # cant change is volume
   csi:
     driver: ebs.csi.aws.com
     fsType: ext4

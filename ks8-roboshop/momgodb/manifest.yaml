@@ -1,0 +1,64 @@
+#A Deployment is responsible for running and managing Pods.:
+apiVersion: v1
+kind: development
+metadata:
+  name: nginx
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: mongodb
+    tier: db
+
+#pod creation: 
+spec:
+  replicas: 1
+  selector:
+    #these lables are used to select pods
+    matchLables:
+      project: roboshop
+      component: mongodb
+      tier: db
+  template:
+    metadata:
+    #these lables should match with selector-matchLables
+      labels:
+        project: roboshop
+        component: mongodb
+        tier: db
+
+#container creation:
+spec:
+  containers:
+  - name: mongodb
+    image: docker7396/mogodb:v1
+    imagePullPolicy: Always
+    readinessProbe:
+      tcpSocket:
+        port: 27017
+      intialDelaySecound: 5
+      periodSecound: 5
+    Liveness Probe:
+      tcpSocket:
+        port: 27017
+        intialDelaySecound: 5
+        periodSecound: 5
+
+---
+#service:
+apiVersion: v1
+kind: service
+metadata: 
+  name: momgodb
+  namespace: roboshop
+spec:
+# This must match the Pod template labels, not the Deployment labels.
+  selector:
+    project: roboshop
+    component: mongodb
+    tier: db
+  ports:
+  - protocol: TCP
+    Port: 27017
+    targetPort: 27017
+
+
